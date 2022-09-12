@@ -1,0 +1,19 @@
+<ul class="list-group mt-3" *ngIf="listRecipe.length > 0">
+  <li class="list-group-item" *ngFor="let recipe of listRecipe">
+    <a
+      class="route-wrap"
+      [routerLink]="['/recipes/detail', recipe.id]"
+      [routerLinkActive]="['active-link']"
+    >
+      <div class="item">
+        <h5>{{ recipe.name }}</h5>
+        <span class="">{{ recipe.description }}</span>
+      </div>
+      <img
+        src="{{ recipe.imageUrl }}"
+        class="img-responsivealt="
+        alt="Image"
+      />
+    </a>
+  </li>
+</ul>

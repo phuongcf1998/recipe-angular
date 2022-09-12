@@ -1,0 +1,41 @@
+<br />
+<form [formGroup]="shoppingForm" (ngSubmit)="onSubmit()" class="row g-3">
+  <div class="col-md-6">
+    <label for="inputName" class="form-label">Name</label>
+    <input
+      type="text"
+      formControlName="name"
+      class="form-control"
+      id="inputName"
+    />
+  </div>
+  <div class="col-md-3">
+    <label for="inputNumber" class="form-label">Amount</label>
+    <input
+      type="number"
+      formControlName="amount"
+      class="form-control"
+      id="inputNumber"
+    />
+  </div>
+  <div class="col-12">
+    <button
+      type="submit"
+      class="btn btn-success"
+      [disabled]="!shoppingForm.valid"
+    >
+      {{ editMode ? "Update" : "Add" }}
+    </button>
+    <button
+      class="btn btn-danger"
+      type="button"
+      (click)="onDelete()"
+      *ngIf="editMode"
+    >
+      Delete
+    </button>
+    <button type="button" (click)="clearDataForm()" class="btn btn-primary">
+      Clear
+    </button>
+  </div>
+</form>

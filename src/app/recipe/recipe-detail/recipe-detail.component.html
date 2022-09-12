@@ -1,0 +1,49 @@
+<div class="detail-recipe">
+  <img
+    src="{{ recipeItem?.imageUrl }}"
+    alt="{{ recipeItem?.name }}"
+    [style.height]="imageHeight"
+    [style.width]="imageWidth"
+  />
+  <br />
+  <br />
+  <h1>Name : {{ recipeItem?.name }}</h1>
+  <br>
+
+  <div class="btn-group">
+    <button
+      class="btn btn-primary dropdown-toggle"
+      type="button"
+      id="defaultDropdown"
+      data-bs-toggle="dropdown"
+      data-bs-auto-close="true"
+      aria-expanded="false"
+    >
+      Manage Recipe
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
+      <li><a class="dropdown-item" (click)="addToShoppingList()">To Shopping List</a></li>
+      <li><a class="dropdown-item" [routerLink]="[ '/recipes/edit', recipeItem?.id ]">Edit Recipe</a> </li>
+      <li><a class="dropdown-item"(click)="deleteRecipe()">Delete Recipe</a></li>
+    </ul>
+  </div>
+
+  <br />
+  <br />
+  <h3>Description : {{ recipeItem?.description }}</h3>
+  <br />
+  <ng-container *ngIf="recipeItem?.ingredients !== undefined">
+    <div
+      class="input-group mb-3"
+      *ngFor="let ingredient of recipeItem?.ingredients"
+    >
+      <input
+        style="width: 100%"
+        type="text"
+        class="form-control"
+        value="{{ ingredient.name }} - {{ ingredient.amount }}"
+      />
+      <br />
+    </div>
+  </ng-container>
+</div>
